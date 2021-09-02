@@ -253,7 +253,7 @@ root.buttons(gears.table.join(
 
 -- {{{ Key bindings
 globalkeys = gears.table.join(
-    awful.key({ modkey,           }, "s",      hotkeys_popup.show_help,
+    awful.key({ modkey,   }, "`",      hotkeys_popup.show_help,
               {description="show help", group="awesome"}),
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev,
               {description = "view previous", group = "tag"}),
@@ -300,16 +300,16 @@ globalkeys = gears.table.join(
     -- Standard program
     awful.key({ modkey,           }, "Return", function () awful.spawn(terminal) end,
               {description = "open a terminal", group = "launcher"}),
-    awful.key({ modkey, "Control" }, "r", awesome.restart,
+    awful.key({ modkey, "Shift" }, "r", awesome.restart,
               {description = "reload awesome", group = "awesome"}),
     awful.key({ modkey, "Shift"   }, "p", awesome.quit,
               {description = "quit awesome", group = "awesome"}),
 
     awful.key({ modkey,           }, "l",     function () awful.tag.incmwfact( 0.05)          end,
               {description = "increase master width factor", group = "layout"}),
-    awful.key({ modkey,           }, "h",     function () awful.tag.incmwfact(-0.05)          end,
+    awful.key({ modkey,           }, "i",     function () awful.tag.incmwfact(-0.05)          end,
               {description = "decrease master width factor", group = "layout"}),
-    awful.key({ modkey, "Shift"   }, "h",     function () awful.tag.incnmaster( 1, nil, true) end,
+    awful.key({ modkey, "Shift"   }, "i",     function () awful.tag.incnmaster( 1, nil, true) end,
               {description = "increase the number of master clients", group = "layout"}),
     awful.key({ modkey, "Shift"   }, "l",     function () awful.tag.incnmaster(-1, nil, true) end,
               {description = "decrease the number of master clients", group = "layout"}),
@@ -339,9 +339,27 @@ globalkeys = gears.table.join(
     awful.key({ modkey },            "r",     function () awful.screen.focused().mypromptbox:run() end,
               {description = "run prompt", group = "launcher"}),
     
-	      awful.key({ modkey },   "space",     function () awful.util.spawn("/home/hikari/.config/rofi/launchers/colorful/launcher.sh") end,
+	      awful.key({ modkey },"z", function () awful.util.spawn("/home/hikari/.config/rofi/launchers/colorful/launcher.sh") end,
     {description="launch rofi", group="custom"}),
-     
+    	 	awful.key({ modkey },"", function () awful.util.spawn("alacritty") end,
+    {description="", group=""}),
+ awful.key({ modkey },"s", function () awful.util.spawn("spotify-tray") end,
+    {description="run spotify", group="custom"}),
+     awful.key({ modkey },"d", function () awful.util.spawn("discord") end,
+    {description="run disocrd", group="custom"}),
+    awful.key({ modkey },"f", function () awful.util.spawn("firefox-bin") end,
+    {description="run firefox", group="custom"}),
+      awful.key({ modkey },"v", function () awful.util.spawn("vscode") end,
+    {description="run vscode", group="custom"}),
+        awful.key({ modkey },"t", function () awful.util.spawn("telegram-desktop") end,
+    {description="run telegram", group="custom"}),
+      awful.key({ modkey },"h", function () awful.util.spawn("htop") end,
+    {description="run htop", group="custom"}),
+         awful.key({ modkey },"e", function () awful.util.spawn("thunar") end,
+    {description="run file manager", group="custom"}),
+ awful.key({ modkey },"b", function () awful.util.spawn("birdtray") end,
+    {description="run thunderbird", group="custom"}),
+
     awful.key({ modkey }, "x",
               function ()
                   awful.prompt.run {
@@ -358,7 +376,7 @@ globalkeys = gears.table.join(
 )
 
 clientkeys = gears.table.join(
-    awful.key({ modkey,           }, "f",
+    awful.key({ modkey,Shift   }, "F",
         function (c)
             c.fullscreen = not c.fullscreen
             c:raise()
@@ -488,7 +506,6 @@ awful.rules.rules = {
     -- Floating clients.
     { rule_any = {
         instance = {
-          "DTA",  -- Firefox addon DownThemAll.
           "copyq",  -- Includes session name in class.
           "pinentry",
         },
@@ -502,6 +519,8 @@ awful.rules.rules = {
           "Tor Browser", -- Needs a fixed window size to avoid fingerprinting by screen size.
           "Wpa_gui",
           "veromix",
+	  "gammy",
+	  "safeeyes",
           "xtightvncviewer"},
 
         -- Note that the name property shown in xprop might be set slightly after creation of the client
@@ -522,8 +541,8 @@ awful.rules.rules = {
    -- },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { screen = 1, tag = "2" } },
+     { rule = { class = "Spotify" },
+  properties = { screen = 1, tag = "9" } },
 }
 -- }}}
 
@@ -599,8 +618,10 @@ beautiful.useless_gaps = 5
 --awful.spawn.with_shell("feh --bg- ~/Downloads/Wallpaper/Aesthetic/wallpaper.jpg")
 gears.wallpaper.tiled("Downloads/Wallpaper/Aesthetic/wallpaper.jpg", s)
 --awful.spawn.with_shell("xrandr --output eDP1 --mode 1920x1080 --rate 59.93 --output HDMI1 --primary --mode 1920x1080 --rate 60.00 --right-of eDP1")
-awful.spawn.with_shell("picom")
-awful.spawn.with_shell("killall flameshot && flameshot")
+awful.spawn.with_shell("picom") 
+awful.spawn.with_shell("flameshot")
+awful.spawn.with_shell("gammy")
+awful.spawn.with_shell("safeeyes")
 
 
 --Brightness
