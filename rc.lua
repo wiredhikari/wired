@@ -327,6 +327,18 @@ awful.key({ modkey,"Shift" }, "e", function () awful.util.spawn( "alacritty -e r
     awful.key({ modkey, "Shift"   }, "Return", function() awful.util.spawn("kitty") end,
     {description="launch neko", group="hotkeys"}),
 
+    awful.key({ }, "F5", function()  awful.spawn.with_shell("sh ~/.screenlayout/layout.sh") end,
+    {description="dual monitor", group="hotkeys"}),
+
+    awful.key({ }, "F10", function()  awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ -10% ") end,
+    {description="dual monitor", group="hotkeys"}),
+
+    awful.key({ }, "F11", function()  awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ +10%") end,
+    {description="dual monitor", group="hotkeys"}),
+
+    awful.key({ }, "F9", function()  awful.spawn.with_shell("pactl set-sink-volume @DEFAULT_SINK@ 0%") end,
+    {description="dual monitor", group="hotkeys"}),
+
 
     awful.key({ }, "F12", function() awful.util.spawn( "flameshot gui" ) end,
         {description = filemanager, group = "alt+ctrl"}),
@@ -888,6 +900,8 @@ awful.spawn.with_shell("gammy")
 awful.spawn.with_shell("safeeyes")
 
 awful.spawn.with_shell("picom")
+
+--awful.spawn.with_shell("~/.screenlayout/layout.sh")
 
 local w = wibox {
     width = 300,
