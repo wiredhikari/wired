@@ -1,13 +1,3 @@
- --____________________________________________/\\\\\\\\\\\\\\\_____________________        
--- ___________________________________________\/////////////\\\_____________________       
---  __________________/\\\________________________________/\\\/___/\\\_______________      
---   __/\\\\\\\\\\__/\\\\\\\\\\\__/\\\\\\\\\_____________/\\\/____\///___/\\\____/\\\_     
---    _\/\\\//////__\////\\\////__\////////\\\__________/\\\/_______/\\\_\///\\\/\\\/__    
---     _\/\\\\\\\\\\____\/\\\________/\\\\\\\\\\_______/\\\/________\/\\\___\///\\\/____   
---      _\////////\\\____\/\\\_/\\___/\\\/////\\\_____/\\\/__________\/\\\____/\\\/\\\___  
---       __/\\\\\\\\\\____\//\\\\\___\//\\\\\\\\/\\__/\\\/____________\/\\\__/\\\/\///\\\_ 
---        _\//////////______\/////_____\////////\//__\///______________\///__\///____\///__
---
 
 local awesome, client, mouse, screen, tag = awesome, client, mouse, screen, tag
 local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, table, tostring, tonumber, type
@@ -123,7 +113,8 @@ local virtualmachine    = "virtualbox"
 
 -- awesome variables
 awful.util.terminal = terminal
-awful.util.tagnames = {"  ","  ", "  ", "  ", " ﭮ ", "  ","  "}
+awful.util.tagnames = {"  ","  ", "  ","  ", "  ","  "}
+--awful.util.tagnames = { "", "", "", "", "" }
 --awful.util.tagnames = { "⠐", "⠡", "⠲", "⠵", "⠻", "⠿" }
 --awful.util.tagnames = { "⌘", "♐", "⌥", "ℵ" }
 --awful.util.tagnames = { "www", "edit", "gimp", "inkscape", "music" }
@@ -346,11 +337,23 @@ awful.key({ modkey,"Shift" }, "e", function () awful.util.spawn( "alacritty -e r
   awful.key({ }, "F2", function () awful.util.spawn("rofi -show window") end,
         {description = rofi, group = "Function Keys"}),
 
-    awful.key({ }, "F3", function () awful.util.spawn("rofi -show run") end,
-        {description = rofi, group = "Function Keys"}),
+    awful.key({ }, "F3", function () awful.util.spawn("brightnessctl s 3000- ") end,
+        {description = brightness, group = "Function Keys"}),
 
- awful.key({  }, "F4", function () awful.util.spawn("rofi -show ssh") end,
-        {description = rofi, group = "Function Keys"}),
+ awful.key({  }, "F4", function () awful.util.spawn("brightnessctl s 3000+ ") end,
+        {description = brightness, group = "Function Keys"}),
+
+ awful.key({  }, "F6", function () awful.util.spawn("python3 -m spotifycli --prev") end,
+        {description = music, group = "Function Keys"}),
+ 
+  awful.key({  }, "F7", function () awful.util.spawn("python3 -m spotifycli --playpause") end,
+        {description =music, group = "Function Keys"}),
+ 
+  awful.key({  }, "F8", function () awful.util.spawn("python3 -m spotifycli --next ") end,
+        {description = music, group = "Function Keys"}),
+
+
+
 
  
  awful.key({  }, "F1", function () awful.util.spawn("tdrop -a -w 1362 -x 260 -y 50 -s dropdown alacritty") end,
@@ -909,3 +912,6 @@ local w = wibox {
     ontop = true,
     screen = mouse.screen,
 }
+
+
+
