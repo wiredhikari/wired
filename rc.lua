@@ -4,7 +4,6 @@ local ipairs, string, os, table, tostring, tonumber, type = ipairs, string, os, 
 
 local logout_popup = require("awesome-wm-widgets.logout-popup-widget.logout-popup")
 
---https://awesomewm.org/doc/api/documentation/05-awesomerc.md.html
 -- Standard awesome library
 local gears         = require("gears") --Utilities such as color parsing and objects
 local awful         = require("awful") --Everything related to window managment
